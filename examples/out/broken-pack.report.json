@@ -1,0 +1,101 @@
+{
+  "deterministic_sha256": "d943541aa06690df3317f8d2a4fcb03167e031c7ab3db0129ee6455c368cc36e",
+  "findings": [
+    {
+      "message": "documented invocation uses `--mode`, but the script that block invokes does not parse it (probed with `--help` and source scan)",
+      "path": "--mode",
+      "rule": "DOC_FLAG_UNSUPPORTED",
+      "severity": "error",
+      "skill": "plugins/demo/skills/beta",
+      "witness": "plugins/demo/skills/beta: --mode"
+    },
+    {
+      "message": "documented command path is repository-relative: it only resolves when the working directory is the parent of a checkout named `stitch-skills`",
+      "path": "stitch-skills/plugins/demo/skills/beta/scripts/report.py",
+      "rule": "DOC_PATH_CLONE_DEPENDENT",
+      "severity": "error",
+      "skill": "plugins/demo/skills/beta",
+      "witness": "stitch-skills/plugins/demo/skills/beta/scripts/report.py"
+    },
+    {
+      "message": "SKILL.md references `resources/input.txt` but that path does not exist under the skill directory",
+      "path": "resources/input.txt",
+      "rule": "DOC_PATH_MISSING",
+      "severity": "error",
+      "skill": "plugins/demo/skills/beta",
+      "witness": "plugins/demo/skills/beta/SKILL.md:resources/input.txt"
+    },
+    {
+      "message": "SKILL.md references `resources/missing-table.md` but that path does not exist under the skill directory",
+      "path": "resources/missing-table.md",
+      "rule": "DOC_PATH_MISSING",
+      "severity": "error",
+      "skill": "plugins/demo/skills/beta",
+      "witness": "plugins/demo/skills/beta/SKILL.md:resources/missing-table.md"
+    },
+    {
+      "message": "documented script cannot start offline: `zzz_not_a_module` is not installed and the skill never tells the agent to install it",
+      "path": "scripts/report.py",
+      "rule": "SCRIPT_DEP_MISSING",
+      "severity": "warning",
+      "skill": "plugins/demo/skills/beta",
+      "witness": "plugins/demo/skills/beta/scripts/report.py --help"
+    },
+    {
+      "message": "script ships in the skill but SKILL.md/README.md never mentions it (not even through a documented npm script), so an agent has no reason to run it",
+      "path": "scripts/bad.py",
+      "rule": "SCRIPT_ORPHAN",
+      "severity": "warning",
+      "skill": "plugins/demo/skills/beta",
+      "witness": "plugins/demo/skills/beta/scripts/bad.py"
+    },
+    {
+      "message": "script ships in the skill but SKILL.md/README.md never mentions it (not even through a documented npm script), so an agent has no reason to run it",
+      "path": "scripts/dead.sh",
+      "rule": "SCRIPT_ORPHAN",
+      "severity": "warning",
+      "skill": "plugins/demo/skills/beta",
+      "witness": "plugins/demo/skills/beta/scripts/dead.sh"
+    },
+    {
+      "message": "interpreter rejected the script:     def broken(:                ^ SyntaxError: invalid syntax",
+      "path": "scripts/bad.py",
+      "rule": "SCRIPT_SYNTAX_ERROR",
+      "severity": "error",
+      "skill": "plugins/demo/skills/beta",
+      "witness": "plugins/demo/skills/beta/scripts/bad.py"
+    },
+    {
+      "message": "script imports `zzz_not_a_module` but the skill documentation never names it, so the install step for an agent following the doc is incomplete",
+      "path": "scripts/report.py",
+      "rule": "SCRIPT_UNDECLARED_DEP",
+      "severity": "warning",
+      "skill": "plugins/demo/skills/beta",
+      "witness": "plugins/demo/skills/beta/scripts/report.py -> zzz_not_a_module"
+    }
+  ],
+  "pack": "/home/ubuntu/GitHub/work/trending/stitch-skills-doctor/examples/in/broken-pack",
+  "summary": {
+    "by_rule": {
+      "DOC_FLAG_UNSUPPORTED": 1,
+      "DOC_PATH_CLONE_DEPENDENT": 1,
+      "DOC_PATH_MISSING": 2,
+      "SCRIPT_DEP_MISSING": 1,
+      "SCRIPT_ORPHAN": 2,
+      "SCRIPT_SYNTAX_ERROR": 1,
+      "SCRIPT_UNDECLARED_DEP": 1
+    },
+    "by_severity": {
+      "error": 5,
+      "info": 0,
+      "warning": 4
+    },
+    "executed_probes": 3,
+    "findings": 9,
+    "scripts": 3,
+    "skills": 1
+  },
+  "tool": "stitch-skills-doctor",
+  "verdict": "fail",
+  "version": "1.0.0"
+}

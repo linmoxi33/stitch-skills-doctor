@@ -1,0 +1,20 @@
+{
+  "deterministic_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "findings": [],
+  "pack": "/home/ubuntu/GitHub/work/trending/stitch-skills-doctor/examples/in/clean-pack",
+  "summary": {
+    "by_rule": {},
+    "by_severity": {
+      "error": 0,
+      "info": 0,
+      "warning": 0
+    },
+    "executed_probes": 1,
+    "findings": 0,
+    "scripts": 1,
+    "skills": 1
+  },
+  "tool": "stitch-skills-doctor",
+  "verdict": "pass",
+  "version": "1.0.0"
+}

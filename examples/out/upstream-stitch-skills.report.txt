@@ -1,0 +1,14 @@
+stitch-skills-doctor 1.0.0
+pack=/tmp/skfull skills=16 scripts=10 executed_probes=10 verdict=fail
+findings=10 {"error": 4, "info": 0, "warning": 6}
+  [error] DOC_PATH_CLONE_DEPENDENT plugins/stitch-design/skills/manage-design-system :: documented command path is repository-relative: it only resolves when the working directory is the parent of a checkout named `stitch-skills`
+  [error] DOC_PATH_MISSING         plugins/stitch-build/skills/remotion :: SKILL.md references `assets/screens/history.png` but that path does not exist under the skill directory
+  [error] DOC_PATH_MISSING         plugins/stitch-build/skills/remotion :: SKILL.md references `assets/screens/home.png` but that path does not exist under the skill directory
+  [error] DOC_PATH_MISSING         plugins/stitch-design/skills/generate-design :: SKILL.md references `examples/metadata.json` but that path does not exist under the skill directory; it only exists at `plugins/stitch-design/skills/manage-design-system/examples/metadata.json`
+  [warning] SCRIPT_ORPHAN            plugins/stitch-build/skills/remotion :: script ships in the skill but SKILL.md/README.md never mentions it (not even through a documented npm script), so an agent has no reason to run it
+  [warning] SCRIPT_UNDECLARED_DEP    plugins/stitch-build/skills/react-native :: script imports `@swc/core` but the skill documentation never names it, so the install step for an agent following the doc is incomplete
+  [warning] SCRIPT_UNDECLARED_DEP    plugins/stitch-design/skills/extract-static-html :: script imports `@babel/generator` but the skill documentation never names it, so the install step for an agent following the doc is incomplete
+  [warning] SCRIPT_UNDECLARED_DEP    plugins/stitch-design/skills/extract-static-html :: script imports `@babel/parser` but the skill documentation never names it, so the install step for an agent following the doc is incomplete
+  [warning] SCRIPT_UNDECLARED_DEP    plugins/stitch-design/skills/extract-static-html :: script imports `@babel/traverse` but the skill documentation never names it, so the install step for an agent following the doc is incomplete
+  [warning] SCRIPT_UNDECLARED_DEP    plugins/stitch-design/skills/extract-static-html :: script imports `@babel/types` but the skill documentation never names it, so the install step for an agent following the doc is incomplete
+sha256=85901b367444d13b772314f9951768831107fbf887a04f6e4c636b6f12d94f0e

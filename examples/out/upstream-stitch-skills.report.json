@@ -1,0 +1,106 @@
+{
+  "deterministic_sha256": "85901b367444d13b772314f9951768831107fbf887a04f6e4c636b6f12d94f0e",
+  "findings": [
+    {
+      "message": "documented command path is repository-relative: it only resolves when the working directory is the parent of a checkout named `stitch-skills`",
+      "path": "stitch-skills/plugins/stitch-design/skills/upload-to-stitch/scripts/upload_to_stitch.py",
+      "rule": "DOC_PATH_CLONE_DEPENDENT",
+      "severity": "error",
+      "skill": "plugins/stitch-design/skills/manage-design-system",
+      "witness": "stitch-skills/plugins/stitch-design/skills/upload-to-stitch/scripts/upload_to_stitch.py"
+    },
+    {
+      "message": "SKILL.md references `assets/screens/history.png` but that path does not exist under the skill directory",
+      "path": "assets/screens/history.png",
+      "rule": "DOC_PATH_MISSING",
+      "severity": "error",
+      "skill": "plugins/stitch-build/skills/remotion",
+      "witness": "plugins/stitch-build/skills/remotion/SKILL.md:assets/screens/history.png"
+    },
+    {
+      "message": "SKILL.md references `assets/screens/home.png` but that path does not exist under the skill directory",
+      "path": "assets/screens/home.png",
+      "rule": "DOC_PATH_MISSING",
+      "severity": "error",
+      "skill": "plugins/stitch-build/skills/remotion",
+      "witness": "plugins/stitch-build/skills/remotion/SKILL.md:assets/screens/home.png"
+    },
+    {
+      "message": "SKILL.md references `examples/metadata.json` but that path does not exist under the skill directory; it only exists at `plugins/stitch-design/skills/manage-design-system/examples/metadata.json`",
+      "path": "examples/metadata.json",
+      "rule": "DOC_PATH_MISSING",
+      "severity": "error",
+      "skill": "plugins/stitch-design/skills/generate-design",
+      "witness": "plugins/stitch-design/skills/generate-design/SKILL.md:examples/metadata.json"
+    },
+    {
+      "message": "script ships in the skill but SKILL.md/README.md never mentions it (not even through a documented npm script), so an agent has no reason to run it",
+      "path": "scripts/download-stitch-asset.sh",
+      "rule": "SCRIPT_ORPHAN",
+      "severity": "warning",
+      "skill": "plugins/stitch-build/skills/remotion",
+      "witness": "plugins/stitch-build/skills/remotion/scripts/download-stitch-asset.sh"
+    },
+    {
+      "message": "script imports `@swc/core` but the skill documentation never names it, so the install step for an agent following the doc is incomplete",
+      "path": "scripts/validate.js",
+      "rule": "SCRIPT_UNDECLARED_DEP",
+      "severity": "warning",
+      "skill": "plugins/stitch-build/skills/react-native",
+      "witness": "plugins/stitch-build/skills/react-native/scripts/validate.js -> @swc/core"
+    },
+    {
+      "message": "script imports `@babel/generator` but the skill documentation never names it, so the install step for an agent following the doc is incomplete",
+      "path": "scripts/extract_inline_html.ts",
+      "rule": "SCRIPT_UNDECLARED_DEP",
+      "severity": "warning",
+      "skill": "plugins/stitch-design/skills/extract-static-html",
+      "witness": "plugins/stitch-design/skills/extract-static-html/scripts/extract_inline_html.ts -> @babel/generator"
+    },
+    {
+      "message": "script imports `@babel/parser` but the skill documentation never names it, so the install step for an agent following the doc is incomplete",
+      "path": "scripts/extract_inline_html.ts",
+      "rule": "SCRIPT_UNDECLARED_DEP",
+      "severity": "warning",
+      "skill": "plugins/stitch-design/skills/extract-static-html",
+      "witness": "plugins/stitch-design/skills/extract-static-html/scripts/extract_inline_html.ts -> @babel/parser"
+    },
+    {
+      "message": "script imports `@babel/traverse` but the skill documentation never names it, so the install step for an agent following the doc is incomplete",
+      "path": "scripts/extract_inline_html.ts",
+      "rule": "SCRIPT_UNDECLARED_DEP",
+      "severity": "warning",
+      "skill": "plugins/stitch-design/skills/extract-static-html",
+      "witness": "plugins/stitch-design/skills/extract-static-html/scripts/extract_inline_html.ts -> @babel/traverse"
+    },
+    {
+      "message": "script imports `@babel/types` but the skill documentation never names it, so the install step for an agent following the doc is incomplete",
+      "path": "scripts/extract_inline_html.ts",
+      "rule": "SCRIPT_UNDECLARED_DEP",
+      "severity": "warning",
+      "skill": "plugins/stitch-design/skills/extract-static-html",
+      "witness": "plugins/stitch-design/skills/extract-static-html/scripts/extract_inline_html.ts -> @babel/types"
+    }
+  ],
+  "pack": "/tmp/skfull",
+  "summary": {
+    "by_rule": {
+      "DOC_PATH_CLONE_DEPENDENT": 1,
+      "DOC_PATH_MISSING": 3,
+      "SCRIPT_ORPHAN": 1,
+      "SCRIPT_UNDECLARED_DEP": 5
+    },
+    "by_severity": {
+      "error": 4,
+      "info": 0,
+      "warning": 6
+    },
+    "executed_probes": 10,
+    "findings": 10,
+    "scripts": 10,
+    "skills": 16
+  },
+  "tool": "stitch-skills-doctor",
+  "verdict": "fail",
+  "version": "1.0.0"
+}

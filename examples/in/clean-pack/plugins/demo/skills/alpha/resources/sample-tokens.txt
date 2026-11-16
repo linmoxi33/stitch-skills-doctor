@@ -1,0 +1,2 @@
+color.text=#111111
+color.bg=#ffffff
